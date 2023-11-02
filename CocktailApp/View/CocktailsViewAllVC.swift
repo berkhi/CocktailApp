@@ -16,7 +16,6 @@ class CocktailsViewAllVC: UIViewController, DrinksViewModelOutput {
         didSet {
             DispatchQueue.main.async {
                 self.cocktailsCollectionView.reloadData()
-                self.filteredDrinks = self.drinks
             }
         }
     }

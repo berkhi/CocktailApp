@@ -11,13 +11,13 @@ import Kingfisher
 class HomeVC: UIViewController, DrinksViewModelOutput {
     func updateView(drinks: [Drink]) {
         self.drinks = drinks
+        self.filteredDrinks = drinks
 //        print(drinks)
     }
     var drinks: [Drink] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.cocktailsCollectionView.reloadData()
-                self.filteredDrinks = self.drinks
             }
         }
     }
