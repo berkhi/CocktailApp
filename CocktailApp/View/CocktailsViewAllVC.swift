@@ -120,7 +120,7 @@ extension CocktailsViewAllVC: UICollectionViewDelegate, UICollectionViewDataSour
         let selectedDrink = drinks[indexPath.item]
         let selectedDrinkId = selectedDrink.idDrink
         
-        let drinksDetailServices: DrinksDetailService = APIServiceDetails()
+        let drinksDetailServices: APIManagerProtocol = APIManager()
         let viewModel = DrinksDetailViewModel(drinksDetailServices: drinksDetailServices)
         
         let detailVC = CocktailDetailsVC(viewModel: viewModel)

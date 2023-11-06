@@ -8,10 +8,10 @@
 import Foundation
 
 class DrinksViewModel {
-    private let drinksService: DrinksService
+    private let drinksService: APIManagerProtocol
     weak var output: DrinksViewModelOutput?
     
-    init(drinksService: DrinksService) {
+    init(drinksService: APIManagerProtocol) {
         self.drinksService = drinksService
     }
     

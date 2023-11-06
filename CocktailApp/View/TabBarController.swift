@@ -26,12 +26,12 @@ class TabBarController : UITabBarController {
         self.tabBar.tintColor = UIColor(hex: "#fe989b", alpha: 1.0)
     }
     func addSomeTabItems() {
-        let drinksService: DrinksService = APIManager()
+        let drinksService: APIManagerProtocol = APIManager()
         let viewModel = DrinksViewModel(drinksService: drinksService)
         let vc1 = UINavigationController(rootViewController: HomeVC(viewModel: viewModel))
         let vc2 = UINavigationController(rootViewController: ViewC2())
         vc1.title = "Home"
-        vc2.title = "Profile"
+        vc2.title = "Credits"
         setViewControllers([vc1, vc2], animated: false)
         guard let items = tabBar.items else { return}
         items[0].image = UIImage(systemName: "house.fill")

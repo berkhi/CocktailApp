@@ -92,11 +92,6 @@ class HomeVC: UIViewController, DrinksViewModelOutput {
     
     private func setupViews(){
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
-        
-        let shoppingCartButton = UIBarButtonItem(image: UIImage(systemName: "cart.fill"), style: .plain, target: self, action: #selector(shoppingCartTapped))
-        shoppingCartButton.tintColor = .black
-        self.navigationItem.rightBarButtonItem = shoppingCartButton
-        
         view.backgroundColor = UIColor.systemBackground
         
         cocktailsCollectionView.delegate = self
@@ -133,12 +128,9 @@ class HomeVC: UIViewController, DrinksViewModelOutput {
             
         ])
     }
-    @objc func shoppingCartTapped() {
-        
-    }
     
     @objc func viewAllCocktailsTapped(){
-        let drinksService: DrinksService = APIManager()
+        let drinksService: APIManagerProtocol = APIManager()
         let viewModel = DrinksViewModel(drinksService: drinksService)
         let cocktailsViewAllVC = CocktailsViewAllVC(viewModel: viewModel)
         navigationController?.pushViewController(cocktailsViewAllVC, animated: false)
@@ -182,7 +174,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         let selectedDrink = drinks[indexPath.item]
         let selectedDrinkId = selectedDrink.idDrink
         
-        let drinksDetailServices: DrinksDetailService = APIServiceDetails()
+        let drinksDetailServices: APIManagerProtocol = APIManager()
         let viewModel = DrinksDetailViewModel(drinksDetailServices: drinksDetailServices)
         
         let detailVC = CocktailDetailsVC(viewModel: viewModel)
